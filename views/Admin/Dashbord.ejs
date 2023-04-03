@@ -6,7 +6,7 @@
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <div class="container-fluid py-4">
       <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
@@ -23,7 +23,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
@@ -40,24 +40,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Pending Order</p>
-                <h4 class="mb-0"><%=pending%></h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">Open <a href="/admin/usermangment">UserMangment</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
+        <div class="col-xl-4 col-sm-6">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
@@ -87,12 +70,12 @@
               </div>
             </div>
             <div class="card-body">
-              <h6 class="mb-0 ">Website Views</h6>
-              <p class="text-sm ">Last Campaign Performance</p>
+              <h6 class="mb-0 ">Payment Graph</h6>
+              <p class="text-sm ">total payment view</p>
               <hr class="dark horizontal">
               <div class="d-flex ">
-                <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm"> campaign sent 2 days ago </p>
+                <i class="material-icons text-sm my-auto me-1">update every time</i>
+                <p class="mb-0 text-sm"> last checked 2 days ago</p>
               </div> 
                 <input type="number" id="UPI" value="<%=UPI %>" hidden>
               <input type="number" id="COD" value="<%= COD %>" hidden>
@@ -115,8 +98,8 @@
               <hr class="dark horizontal">
               <div class="d-flex ">
                 <input type="number" id="sales" value="<%= sales %>" hidden>
-                <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm"> updated 4 min ago </p>
+                <i class="material-icons text-sm my-auto me-1">weekly sales Graph</i>
+            
               </div>
             </div>
           </div>
@@ -131,8 +114,8 @@
               </div>
             </div>
             <div class="card-body">
-              <h6 class="mb-0 ">Completed Tasks</h6>
-              <p class="text-sm ">Last Campaign Performance</p>
+              <h6 class="mb-0 ">Order Tasks</h6>
+              <p class="text-sm ">weekly order view</p>
               <hr class="dark horizontal">
               <div class="d-flex ">
                 <input type="number" id="delevired" value="<%= delevired %>" hidden>
