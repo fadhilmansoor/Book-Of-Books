@@ -1,0 +1,182 @@
+<%- include('../userlayout/header.ejs')%>
+
+<link href="/usercss/style.css" rel="stylesheet">
+
+<body class="animsition">
+  <div class="top-bar">
+    <div class="content-topbar flex-sb-m h-full container">
+      <div class="left-top-bar">
+        Free shipping for standard order over $100
+      </div>
+
+      <div class="right-top-bar flex-w h-full">
+
+        <a href="/login" class="flex-c-m trans-04 p-lr-25">
+          Login
+        </a>
+
+        <a href="/profile" class="flex-c-m trans-04 p-lr-25">
+          Profile
+        </a>
+        <a href="/orderview" class="flex-c-m trans-04 p-lr-25">
+          Your Orders
+        </a>
+        <a href="/logout" class="flex-c-m trans-04 p-lr-25">
+          LogOut
+        </a>
+      </div>
+  </div>
+
+
+  <div class="wrap-menu-desktop">
+    <nav class="limiter-menu-desktop container">
+
+      <!-- Logo desktop -->
+      <h3 style="margin-right: 50px">Book Of Books</h3>
+
+      <!-- Menu desktop -->
+      <div class="menu-desktop">
+        <ul class="main-menu">
+          <li class="active-menu">
+            <a href="/">Home</a>
+          </li>
+
+          <li>
+            <a href="/shop">Shop</a>
+          </li>
+
+          <li class="label1" data-label1="hot">
+            <a href="/Cart">Features</a>
+          </li>
+
+          <li>
+            <a href="/blog">Blog</a>
+          </li>
+
+          <li>
+            <a href="/About">About</a>
+          </li>
+        </ul>
+      </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile">
+            <!-- Logo moblie -->
+            <div class="logo-mobile">
+              <h3 style="margin-right: 50px">Book Of Books</h3>
+            </div>
+
+            <!-- Button show menu -->
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
+
+
+
+
+        <!-- Modal Search -->
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+            <div class="container-search-header">
+                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                    <img src="images/icons/icon-close2.png" alt="CLOSE">
+                </button>
+
+                <form class="wrap-search-header flex-w p-l-15">
+                    <button class="flex-c-m trans-04">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                    <input class="plh3" type="text" name="search" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </header>
+
+  
+    <div class="container">
+        <div class="main-body">
+        
+              <!-- Breadcrumb -->
+              <nav aria-label="breadcrumb" class="main-breadcrumb" style="padding-top: 80px;" >
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="/profile">UserProfile</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
+                </ol>
+              </nav>
+              <!-- /Breadcrumb -->
+        <form action="" method="post">
+              <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex flex-column align-items-center text-center">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                        <div class="mt-3">
+                          UPDATE PHOTO
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                </div>
+                <div class="col-md-8">
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0" style="padding: 10px;">Edit Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <input type="text" name="newname" class="form-control" value="<%= userDatas.name %>" aria-describedby="emailHelp" placeholder="update name">
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0" style="padding: 10px;">Edit Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <input type="email" name="email" class="form-control" value="<%= userDatas.email %>"  aria-describedby="emailHelp" placeholder="update Email">
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0" style="padding: 10px;">Edit Phone Number</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <input type="tel" name="newmobile" class="form-control" value="<%= userDatas.mobile %>" aria-describedby="emailHelp" placeholder="update Phone">
+                        </div>
+                      </div>
+                      <br><br>
+                      <!-- <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0" style="padding: 10px;">Edit Address</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <input type="text" name="address" class="form-control" value="<%=  userDatas.address%>" aria-describedby="emailHelp" placeholder="update Address">
+                        </div>
+                      </div>
+                      <br><br> -->
+                      <div class="row" >
+                        <div class="col-sm-12" style="margin-left: 630px;">
+                         <button type="submit" class="btn btn-primary">update</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            </div>
+        </div>
+     
+
+
+  <%- include('../userlayout/footer.ejs')%>

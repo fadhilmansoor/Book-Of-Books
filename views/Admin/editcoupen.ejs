@@ -1,0 +1,49 @@
+
+<%- include('../layouts/header.ejs')%>
+
+<%- include('../layouts/sidebar.ejs')%>
+   
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+
+
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+
+ <form method="post" style="padding: 80px;" >
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Coupencode</label>
+        <input type="text" name="code" class="form-control" value="<%= edit.code %>" id="inputEmail4" placeholder="enter the Coupencode">
+      </div>
+      <!-- <div class="form-group col-md-6">
+        <label for="inputPassword4">Discount</label>
+        <input type="number" name="discount" class="form-control" id="inputPassword4" placeholder="Discount">
+      </div> -->
+    </div>
+    <div class="form-group">
+      <label for="inputAddress"> expirationDate</label>
+      <input type="date" name="expirationDate" class="form-control" value="<%= edit.expirationDate %>"  id="inputAddress" placeholder="select the date">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="inputPassword4">MaxDiscount</label>
+        <input type="number" name="maxDiscount" class="form-control" value="<%= edit.maxDiscount %>"  id="inputPassword4" placeholder="maximum Discount">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">MinpurachaseAmount</label>
+        <input type="number" name="minpurachaseAmount" class="form-control" value="<%= edit.minpurachaseAmount%>"  id="inputPassword4" placeholder="minimunpurachaseAmount">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">ParcentageOff</label>
+        <input type="number" name="parcentageOff" class="form-control"value="<%= edit.parcentageOff %>" id="inputPassword4" placeholder="Offer%%">
+      </div>
+      <br>
+    <button type="submit" class="btn btn-primary">ADD</button>
+    <br>
+    <% if(typeof message !=="undefined") { %>
+        <h5 style="font-size: 14px;color: brown;"><%=message %></h5>
+        <% } %>
+  </form>
+      
+     

@@ -1,0 +1,74 @@
+<%- include('../layouts/header.ejs')%>
+<%- include('../layouts/nav.ejs')%>
+<%- include('../layouts/sidebar.ejs')%>
+
+
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <div class="container-fluid py-4">
+        <div class="row">
+          <div class="col-12">
+            <div class="card my-4">
+              <div class="card-header p-0 posit00.   ion-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                  <h6 class="text-white text-capitalize ps-3"> Deatialed Of Order</h6>
+                </div>
+              </div>
+              <div class="card-body px-0 pb-2">
+                <div class="table-responsive p-0">
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                        <th scope="col">Product Name</th>
+                        <th scope="col" >Client</th>
+                        <th scope="col" >Qty</th>
+                        <th scope="col" >Payment Method</th>
+                        <th scope="col" ></th>
+                        <th scope="col" >total Amount</th>
+                        <th scope="col" >Moblie Number</th>
+                      
+                    </thead>
+                    <tbody>
+                      <tr>
+                   
+                       
+                    <td scope="row">
+                      <% detail.product.forEach((element,i)=>{ %>
+                    <%= element.productid.name %>
+                    <br>
+                    <% }) %>
+                    </td>
+                   
+                    <td style="text-align: center;">
+                        <%=detail.userid.name %>
+                    </td>
+                        <td style="text-align: center">
+                          <% detail.product.forEach((element)=>{ %>
+                            <%= element.quantity%>
+                            <br>
+                            <%}) %>
+                        </td>
+                        <td style="text-align: center">
+                            <%= detail.paymentType%>
+                        </td>
+                        <td style="text-align: center;"></td>
+                                 <td style="text-align: center">
+                                    <%= detail.total %>
+                                <br>
+                                 </td>
+                               <td style="text-align: center"><%=detail.userid.mobile%></td>
+                          <td></td>
+                  </tr>
+                    </tbody>
+                </table>
+             </div>
+           </div> 
+         </div>
+       </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready( function () {
+    $('#reload').DataTable();
+} );
+</script>
+    
+<%- include('../layouts/footer.ejs')%>

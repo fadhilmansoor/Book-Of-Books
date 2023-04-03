@@ -1,0 +1,231 @@
+<%- include('../layouts/header.ejs')%>
+<%- include('../layouts/nav.ejs')%>
+<%- include('../layouts/sidebar.ejs')%>
+
+
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
+
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" charset="utf8"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script type="text/javascript" charset="utf8"
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script type="text/javascript" charset="utf8"
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
+
+  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet"> -->
+
+    
+    <link rel="stylesheet" href="/calender/fonts/icomoon/style.css">
+    
+    <link rel="stylesheet" href="/calender/css/classic.css">
+    <link rel="stylesheet" href="/calender/css/classic.date.css">
+
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/calender/css/bootstrap.min.css"> 
+        <div class="container-fluid py-4">
+          <div class="row">
+            <div class="col-12">
+              <div class="card my-4">
+                <div class="card-header p-0 posit00.   ion-relative mt-n4 mx-3 z-index-2">
+                    <!-- <button type="button" class="btn btn-primary float-right no-print" onclick="window.print()">Print
+                        Report</button> -->
+                    
+                  <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">SALES TABLE</h6>
+                  </div>
+                </div>
+                <div class="card-body px-0 pb-2" >
+                <form action="" method="post" class="row">
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="input_from">From</label>
+                        <input type="date" name="from" class="form-control" id="input_from" placeholder="Start Date">
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="input_to">To</label>
+                        <input type="date" name="to" class="form-control" id="input_to" placeholder="End Date">
+                      </div>
+                    </div>
+                      <div class="col-md-4" style="align-items: center;">
+                      <button type="submit" class="btn btn-success mt-4">Submit</button> 
+                    </div>
+                    <% if(typeof message !=="undefined") { %>
+                      <h1 style="font-size: 14px;color: brown;"><%=message  %></h1>
+                  <% } %>
+                </form>
+
+                    <table class="table align-items-center mb-0" id="example">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Date</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                   <th></th>
+                    <th>Payment Method</th>
+                    <th>Total Amount</th>
+                  </tr>
+                </thead>
+                <% for(let i=0;i<done.length;i++){ %>
+                 <tr>
+                   <td>
+                   <%= i+1 %>
+                   </td>
+                   <td>
+                   <%= done[i].date.toLocaleDateString()%>
+                   </td>
+                    <td>
+                      <% done[i].product.forEach((x) => { %>
+                        <%= x.product.name%>
+                        <br>
+                      <% }) %>
+                    </td>
+                    <td style="text-align: center;">
+                      <% done[i].product.forEach((x) => { %>
+                        <%= x.quantity %>
+                        <br>
+                        <% }) %>
+                      </td>
+                      <td></td>
+                  <td  style="text-align: center">
+                  <%= done[i].paymentType %>
+                  </td>
+                   <td style="text-align: center;">
+                    <%= done[i].total %>
+                   </td>
+                  
+                  
+                 </tr>
+                 <% } %>
+                <tbody>
+                </tbody>
+            </table>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  
+  
+  
+  
+  
+  <style>
+    .dt-button.buttons-excel
+   {
+      background-color: #4CAF50;
+      /* Change background color */
+      color: white;
+      /* Change text color */
+      border-radius: 5px;
+      /* Add rounded corners */
+      border: none;
+      /* Remove border */
+      margin-right: 10px;
+      /* Add some spacing between buttons */
+      padding: 8px 16px;
+      /* Increase padding */
+    }
+    .dt-button.buttons-csv
+   {
+      background-color: #787878;
+      /* Change background color */
+      color: white;
+      /* Change text color */
+      border-radius: 5px;
+      /* Add rounded corners */
+      border: none;
+      /* Remove border */
+      margin-right: 10px;
+      /* Add some spacing between buttons */
+      padding: 8px 16px;
+      /* Increase padding */
+    }
+    .dt-button.buttons-print
+   {
+      background-color: #000000;
+      /* Change background color */
+      color: white;
+      /* Change text color */
+      border-radius: 5px;
+      /* Add rounded corners */
+      border: none;
+      /* Remove border */
+      margin-right: 10px;
+      /* Add some spacing between buttons */
+      padding: 8px 16px;
+      /* Increase padding */
+    }
+    .dt-button.buttons-copy
+   {
+      background-color: #b3226a;
+      /* Change background color */
+      color: white;
+      /* Change text color */
+      border-radius: 5px;
+      /* Add rounded corners */
+      border: none;
+      /* Remove border */
+      margin-right: 10px;
+      /* Add some spacing between buttons */
+      padding: 8px 16px;
+      /* Increase padding */
+    }
+    .dt-button.buttons-pdf
+   {
+      background-color: #0f6fff;
+      /* Change background color */
+      color: white;
+      /* Change text color */
+      border-radius: 5px;
+      /* Add rounded corners */
+      border: none;
+      /* Remove border */
+      margin-right: 10px;
+      /* Add some spacing between buttons */
+      padding: 8px 16px;
+      /* Increase padding */
+    }
+  </style>
+    
+    
+     
+  <script>
+    
+    $(document).ready(function () {
+      $('#example').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+          'copy', 'print', 'excel', 'csv', 'pdf'
+        ]
+      });
+    });
+
+  </script>
+  
+  
+
+  
+  
+  
+  <%- include('../layouts/footer.ejs')%>

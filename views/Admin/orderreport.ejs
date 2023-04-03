@@ -1,0 +1,82 @@
+<%- include('../layouts/header.ejs')%>
+<%- include('../layouts/nav.ejs')%>
+<%- include('../layouts/sidebar.ejs')%>
+
+
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <div class="container-fluid py-4">
+        <div class="row">
+          <div class="col-12">
+            <div class="card my-4">
+              <div class="card-header p-0 posit00.   ion-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                  <h6 class="text-white text-capitalize ps-3">SALES TABLE</h6>
+                </div>
+              </div>
+              <div class="card-body px-0 pb-2">
+                <div class="table-responsive p-0">
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">NO
+                        </th>
+                        <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">price</th>
+                        <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">orderdateandtime</th>
+                        <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">status</th>
+                        <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">view</th>
+                        <!-- <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">status</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% orderdata.forEach((x,i)=>{ %>
+                    <tr>
+                     <th scope="row"><%=i+1%></th>
+                     <td><%= x.total %></td>
+                     <td><%= x.date.toLocaleString({ year: '2-digit', month: '2-digit' ,day: '2-digit'})%></td>
+                     <td>
+                       <% if (x.status=="cancelled" ||x.status == "delivered"||x.status=="Returned"||x.status=="paymentfailed"){%>
+                        <%= x.status %>
+                        <% }else{ %>
+                          <form action="/admin/Orderreport"  method="post">
+                            <input type="hidden" name="orderid" value="<%= x.orderId %>">
+                            <select style="color: palevioletred; border: none;" name="status" onchange="this.form.submit()" <% if (x.status === "cancelled" || x.status === "Delivered" || x.status === "Payment failed") { %>disabled<% } %>>
+                              <% if (x.status === "Delivered") { %>
+                                <option value="Delivered" selected>Delivered</option>
+                              <% } else if (x.status === "Return requsted") { %>
+                              <option value="Shipped" selected>Return requested</option>
+                              <option value="Returned">Approve</option>
+                        <% } else if (x.status === "Shipped") { %>
+                            <option value="Shipped" selected>Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                        <% } else if (x.status === "confirmed") { %>
+                            <option value="confirmed" selected>confirmed</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                        <% } else { %>
+                            <option value="Pending" selected>Pending</option>
+                            <option value="confirmed">confirmed</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                        <% } %>
+                     </td>
+                     <td><a href="/admin/singleorderview/<%=x._id%>"><i class="fa-solid fa-eye"></i></a></i></td>
+                     <% } %>
+            
+                        </select>
+                      </form>
+                      <% }) %>
+                    </tbody>
+                  </table>
+               </div>
+             </div> 
+           </div>
+         </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready( function () {
+      $('#reload').DataTable();
+  } );
+  </script>
+      
+<%- include('../layouts/footer.ejs')%>

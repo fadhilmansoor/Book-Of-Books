@@ -1,0 +1,100 @@
+<%- include('../layouts/header.ejs')%>
+  <%- include('../layouts/nav.ejs')%>
+    <%- include('../layouts/sidebar.ejs')%>
+
+      <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <div class="container-fluid py-4">
+          <div class="row" style="padding: 10px;">
+            <div class="col-12">
+              <div class="card my-4">
+                <div class="card-header p-0 posit00.   ion-relative mt-n4 mx-3 z-index-2">
+                  <a href="/admin/addproducts" class="btn btn-outline-primary" role="button">Add</a>
+
+
+                  <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">proudcts table</h6>
+                  </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                  <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                      <thead>
+                        <tr>
+                          <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                          
+                          </th>
+
+                          <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Name</th>
+                          <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Price</th>
+                            <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Stock
+                            </th>
+                          <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            About</th>
+                          <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            category</th>
+                          <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            image</th>
+                          <th scope="col" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                          </th>
+
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      
+                        <% dataproduct.forEach((x,index)=>{ %>
+                          <tr>
+                            <th scope="row">
+                              <%= index+1 %>
+                            </th>
+                            <td>
+                              <%=x.name %>
+                            </td>
+                            <td>
+                              <%=x.Price %>
+                            </td>
+                            <td>
+                              <%= x.stock %>
+                            </td>
+                            <td style="max-width: 100px; overflow: hidden;
+                          text-overflow: ellipsis;
+                          white-space: nowrap;">
+                              <%=x.About %>
+                            </td>
+                            <td>
+                              <%=x.category.Category%>
+                            </td>
+
+
+                            <td>
+                              <% for(let i=0;i<x.image.length;i++) { %>
+
+                                <img src="<%=x.image[i]%>" alt="" width="100px">
+                                <%}%>
+                            <th>
+                              <button class="btn btn-outline-primary"> <a
+                                  href="/admin/viewprouducts/deleteproducts/<%= x._id %>">DELETE</a></button></a>
+
+                              <button type="submit" class="btn btn-outline-warning"><a
+                                  href="/admin/viewproducts/editproducts/<%=x._id%>">EDIT</a></button>
+                            </th>
+                            </th>
+                            </td>
+
+                          </tr>
+                          <th>
+
+                            <% }); %>
+                          <th>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <%- include('../layouts/footer.ejs')%>  
