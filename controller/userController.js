@@ -392,6 +392,41 @@ console.log(id);
   }
 }
 
+// ADDING TO CHECKOUT
+const addresstocheckout = async (req, res) => {
+  try {
+    const id = req.session.userid;
+    const address = req.body.addaddress; // get the address from the request body
+    const user = await users.findOne({ _id: id });
+    
+    if (user) {
+      const existingAddress = user.address.find(a => a.address1 === address);
+
+      if (existingAddress) {
+        // if the address already exists, increment its count
+        await users.updateOne(
+          { _id: id, 'address.address1': address },
+          { $inc: { 'address.$.count': 1 } }
+        );
+      } else {
+        // otherwise, add the address to the user's address array
+        await users.updateOne(
+          { _id: id },
+          { $push: { address: { address1: address } } } // just push the address, no need to specify count
+        );
+      }
+      
+      res.redirect('/profile');
+    } else {
+      // handle the case where the user is not found
+      res.status(404).send('User not found');
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
 
 
 //RETURNORDERS
@@ -631,6 +666,7 @@ module.exports = {
     otp,
     changepassword,
     cancelorder,
-    profilechange
+    profilechange,
+    addresstocheckout
     
 }

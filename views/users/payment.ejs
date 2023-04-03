@@ -117,7 +117,7 @@
 
             <!-- Checkout Start -->
             <form id="checkout" method="post">
-                <div class="container-fluid pt-5">
+                <div class="container-fluid pt-5" id="refresh">
                     <div class="row px-xl-5">
                         <div class="col-lg-8">
                             <div class="mb-4">
@@ -155,10 +155,10 @@
 
                                     </div>
                                     
-                                    <div class="col-md-6 form-group">
+                                    <div class="col-md-6 form-group" >
                                         <label>Address</label>
-                                        <select style="color: black;" class="custom-select" name="address">
-                                            <option selected> select address </option>
+                                        <select style="color: black;" class="custom-select" name="address" >
+                                            <option  selected> select address </option>
                                             <% data.address.forEach((element)=>{ %> 
                                                 <option value="<%= element.address1%>"><%= element.address1 %>
                                                 </option> 
@@ -194,7 +194,7 @@
                             </div>
 
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4" >
                             <div class="card border-secondary mb-5">
                                 <div class="card-header bg-secondary border-0">
                                     <h4 class="font-weight-semi-bold m-0">Order Total</h4>
@@ -470,7 +470,7 @@ console.log(response.totalPrice,"rsfwgwrgergrl")
                 console.log(formData);
 
                 $.ajax({
-                    url: "/addaddress",
+                    url: "/adreesstocheckout",
                     method: "post",
                     data: {
                         addaddress: formData.find(f => f.name === 'addaddress').value
@@ -479,6 +479,7 @@ console.log(response.totalPrice,"rsfwgwrgergrl")
                         console.log(response);
                         // update the UI to reflect the changes made to the user's address
                         // for example, by showing a success message or refreshing the address list
+                        $('#refresh').load('/checkout #refresh')
                     },
                     error: function (xhr, status, error) {
                         console.log(error);

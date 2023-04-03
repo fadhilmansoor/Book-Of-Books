@@ -70,7 +70,9 @@ const changeqty = async (req, res) => {
                const quan = await userdata.findOne({ _id: req.session.userid, "cart.items.product_id": proid }, { _id: 0, "cart.items.qty.$": 1 })
                const multiquan = quan.cart.items[0].qty
                const pricequan = Price * multiquan
-               await userdata.updateOne({ _id: req.session.userid, 'cart.items.product_id': proid }, { $inc: { "cart.items.$.product_idtotal": pricequan } })
+               console.log(pricequan);
+               console.log(Price);
+               await userdata.updateOne({ _id: req.session.userid, 'cart.items.product_id': proid }, { $set: { "cart.items.$.product_idtotal": pricequan } })
                const carts = await userdata.findOne({ _id: req.session.userid })
 
 //TOTALPRICE

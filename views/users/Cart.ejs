@@ -302,7 +302,7 @@
 
 										</td>
 
-										<td class="<%= cart.product_id._id %>" style="padding: 50px;">
+										<td id="<%= cart.product_id._id %>hai" style="padding: 50px;">
 											<%= cart.product_idtotal%>
 										</td>
 
@@ -446,7 +446,7 @@
 						success: (response) => {
 							console.log(response);
 							document.getElementById(proid).innerHTML = parseInt(quantity) + count
-							document.getElementsByClassName(proid)[0].innerHTML = response.pricequan
+						document.getElementById(proid+"hai").innerHTML=response.pricequan
 							document.getElementById('total').innerHTML =response.total
 						}
 					})

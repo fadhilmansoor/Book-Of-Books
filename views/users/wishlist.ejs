@@ -58,7 +58,7 @@
 				</div>
 
 						<!-- Icon header -->
-						<div class="wrap-icon-header flex-w flex-r-m">
+						<div class="wrap-icon-header flex-w flex-r-m" >
 							<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
 								<i class="zmdi zmdi-search"></i>
 							</div>
@@ -234,7 +234,7 @@
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
 				  <div class="m-l-25 m-r--38 m-lr-0-xl" id="reloaddiv">
 					
-					  <table class="table-shopping-cart">
+					  <table class="table-shopping-cart" id="reloaddive">
 						<tr class="table_head">
 						  <th class="column-1">Product</th>
 						  <th class="column-2"></th>
@@ -245,7 +245,7 @@
 						  <th class="column-6">Add ToCart</th>
 						</tr>
 		  
-						<% if (userData.wishlist) {
+						<% if (userData?.wishlist) {
 						  userData.wishlist.forEach((product) => { %>
 							<tr class="table_row">
 							  <td class="column-1">
@@ -305,7 +305,7 @@
 					'Your file has been deleted.',
 					'success'
 					);
-					$('#reloaddiv').load('/whislist #reloaddiv');
+					$('#reloaddive').load('/whislist #reloaddive');
                    }
                     })
                     }

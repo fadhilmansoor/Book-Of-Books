@@ -80,6 +80,7 @@ userRouter.post('/check_out',checkoutController.addpayment)
 userRouter.post('/verifypayment',checkoutController.verifyPayment)
 userRouter.post('/apply_coupan',checkoutController.applycoupan)
 userRouter.get('/success_page',userController.ordersuccess)
+userRouter.post('/adreesstocheckout',userController.addresstocheckout)
 
 userRouter.get('/orderview',userController.orderview)
 userRouter.post('/return_order',userController.Returnorder)
