@@ -7,7 +7,7 @@ const users = async (req, res) => {
     try {
         if (req.session.adminid) {
             const viewuser = await userdata.find({})
-            res.render('usermangment', { viewUser: viewuser })
+            res.render('UsermanagementNew', { viewUser: viewuser })
         } else {
             res.redirect('/admin')
         }
